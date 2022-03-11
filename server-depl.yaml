@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: server-depl
 spec:
-  replicas: 3
+  replicas: 1
   selector: 
     matchLabels:
       app: server
@@ -24,11 +24,10 @@ kind: Service
 metadata:
   name: server-srv
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: server
   ports:
     - protocol: TCP
       port: 3000
       targetPort: 3000
-      nodePort: 30005
